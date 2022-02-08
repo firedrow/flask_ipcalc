@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block ipcalc %}
+<br />
+
+<table>
+    <tr>
+        <td>Address:</td><td>{{ ipaddr }}</td>
+    </tr>
+    <tr>
+        <td>Netmask:</td><td>{{ netmask }}</td>
+    </tr>
+    <tr style="border-bottom: 1px black dotted;">
+        <td>Wildcard:</td><td>{{ wildcard }}</td>
+    </tr>
+    <tr>
+        <td>Network:</td><td>{{ network }}</td>
+    </tr>
+    <tr>
+        <td>Broadcast:</td><td>{{ bcast }}</td>
+    </tr>
+    <tr>
+        <td>HostMin:</td><td>{{ hostmin }}</td>
+    </tr>
+    <tr>
+        <td>HostMax:</td><td>{{ hostmax }}</td>
+    </tr>
+    <tr>
+        <td>Hosts/Net:</td><td>{{ hostnet }}</td>
+    </tr>
+</table>
+
+{% endblock %}

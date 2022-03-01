@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block ipcalc %}
+<br />
+
+<h3>Subnet Info</h3>
+<table>
+    <tr>
+        <td>Address:</td><td>{{ subnet.address }}</td>
+    </tr>
+    <tr>
+        <td>Netmask:</td><td>{{ subnet.netmask }}</td>
+    </tr>
+    <tr style="border-bottom: 1px black dotted;">
+        <td>Wildcard:</td><td>{{ subnet.wildcard }}</td>
+    </tr>
+    <tr>
+        <td>Network:</td><td>{{ subnet.network }}</td>
+    </tr>
+    <tr>
+        <td>Broadcast:</td><td>{{ subnet.broadcast }}</td>
+    </tr>
+    <tr>
+        <td>HostMin:</td><td>{{ subnet.hostmin }}</td>
+    </tr>
+    <tr>
+        <td>HostMax:</td><td>{{ subnet.hostmax }}</td>
+    </tr>
+    <tr>
+        <td>Hosts/Net:</td><td>{{ subnet.hostnet }}</td>
+    </tr>
+</table>
+
+<h3>Subnet Transformation</h3>
+<table>
+{% if newmasks|length > 1 %}
+    {% for mask in newmasks %}
+    <tr>
+        <td>Network:</td><td>{{ mask.network }}</td>
+    </tr>
+    <tr>
+        <td>Broadcast:</td><td>{{ mask.broadcast }}</td>
+    </tr>
+    <tr>
+        <td>HostMin:</td><td>{{ mask.hostmin }}</td>
+    </tr>
+    <tr>
+        <td>HostMax:</td><td>{{ mask.hostmax }}</td>
+    </tr>
+    <tr style="border-bottom:1px black solid;">
+        <td>Hosts/Net:</td><td>{{ mask.hostnet }}</td>
+    </tr>
+    {% endfor %}
+{% else %}
+    {% for mask in newmasks %}
+    <tr>
+        <td>Network:</td><td>{{ mask.network }}</td>
+    </tr>
+    <tr>
+        <td>Broadcast:</td><td>{{ mask.broadcast }}</td>
+    </tr>
+    <tr>
+        <td>HostMin:</td><td>{{ mask.hostmin }}</td>
+    </tr>
+    <tr>
+        <td>HostMax:</td><td>{{ mask.hostmax }}</td>
+    </tr>
+    <tr>
+        <td>Hosts/Net:</td><td>{{ mask.hostnet }}</td>
+    </tr>
+    {% endfor %}
+{% endif %}
+</table>
+
+{% endblock %}

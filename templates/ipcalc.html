@@ -2,30 +2,31 @@
 {% block ipcalc %}
 <br />
 
+<h3>Subnet Info</h3>
 <table>
     <tr>
-        <td>Address:</td><td>{{ ipaddr }}</td>
+        <td>Address:</td><td>{{ subnet.address }}</td>
     </tr>
     <tr>
-        <td>Netmask:</td><td>{{ netmask }}</td>
+        <td>Netmask:</td><td>{{ subnet.netmask }}</td>
     </tr>
     <tr style="border-bottom: 1px black dotted;">
-        <td>Wildcard:</td><td>{{ wildcard }}</td>
+        <td>Wildcard:</td><td>{{ subnet.wildcard }}</td>
     </tr>
     <tr>
-        <td>Network:</td><td>{{ network }}</td>
+        <td>Network:</td><td>{{ subnet.network }}</td>
     </tr>
     <tr>
-        <td>Broadcast:</td><td>{{ bcast }}</td>
+        <td>Broadcast:</td><td>{{ subnet.broadcast }}</td>
     </tr>
     <tr>
-        <td>HostMin:</td><td>{{ hostmin }}</td>
+        <td>HostMin:</td><td>{{ subnet.hostmin }}</td>
     </tr>
     <tr>
-        <td>HostMax:</td><td>{{ hostmax }}</td>
+        <td>HostMax:</td><td>{{ subnet.hostmax }}</td>
     </tr>
     <tr>
-        <td>Hosts/Net:</td><td>{{ hostnet }}</td>
+        <td>Hosts/Net:</td><td>{{ subnet.hostnet }}</td>
     </tr>
 </table>
 

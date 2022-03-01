@@ -8,7 +8,7 @@
         <td>Address:</td><td>{{ subnet.address }}</td>
     </tr>
     <tr>
-        <td>Netmask:</td><td>{{ subnet.netmask }}</td>
+        <td>Netmask:</td><td>{{ subnet.netmask }} = {{ subnet.netmaskcidr }}</td>
     </tr>
     <tr style="border-bottom: 1px black dotted;">
         <td>Wildcard:</td><td>{{ subnet.wildcard }}</td>
@@ -31,7 +31,16 @@
 </table>
 
 <h3>Subnet Transformation</h3>
+
+
+
 <table>
+    <tr>
+        <td>Netmask:</td><td>{{ newmasks[0].netmask }} = {{ newmasks[0].netmaskcidr }}</td>
+    </tr>
+    <tr style="border-bottom: 1px black dotted;">
+        <td>Wildcard:</td><td>{{ newmasks[0].wildcard }}</td>
+    </tr>
 {% if newmasks|length > 1 %}
     {% for mask in newmasks %}
     <tr>

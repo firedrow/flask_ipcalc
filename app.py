@@ -29,7 +29,8 @@ def ipcalc():
         subnet = ipaddress.IPv4Network(f"{ipaddr}/{netmask}", strict=False)
         subnetinfo = ('{'
                       f'"address": "{ipaddr}",'
-                      f'"netmask": "{netmask}",'
+                      f'"netmask": "{subnet.netmask}",'
+                      f'"netmaskcidr": "{subnet.prefixlen}",'
                       f'"wildcard": "{subnet.hostmask}",'
                       f'"network": "{subnet.with_prefixlen}",'
                       f'"broadcast": "{subnet.broadcast_address}",'
@@ -39,13 +40,14 @@ def ipcalc():
                       '}')
         return render_template("ipcalc.html", subnet=json.loads(subnetinfo))
 
-    elif (request.method == "POST") and (request.form != ""):
+    elif (request.method == "POST") and (request.form["newmask"] != ""):
         ipaddr = request.form["ipaddr"]
         netmask = request.form["netmask"]
         subnet = ipaddress.IPv4Network(f"{ipaddr}/{netmask}", strict=False)
         subnetinfo = ('{'
                       f'"address": "{ipaddr}",'
-                      f'"netmask": "{netmask}",'
+                      f'"netmask": "{subnet.netmask}",'
+                      f'"netmaskcidr": "{subnet.prefixlen}",'
                       f'"wildcard": "{subnet.hostmask}",'
                       f'"network": "{subnet.with_prefixlen}",'
                       f'"broadcast": "{subnet.broadcast_address}",'
@@ -59,6 +61,9 @@ def ipcalc():
         if int(newmask) > int(netmask):  # Subnet
             for newnet in subnet.subnets(new_prefix=int(newmask)):
                 newmasks.append({
+                                "netmask": f"{newnet.netmask}",
+                                "netmaskcidr": f"{newnet.prefixlen}",
+                                "wildcard": f"{newnet.hostmask}",
                                 "network": f"{newnet.with_prefixlen}",
                                 "broadcast": f"{newnet.broadcast_address}",
                                 "hostmin": f"{list(newnet.hosts())[0]}",
@@ -68,6 +73,9 @@ def ipcalc():
         else:  # Supernet
             newnet = subnet.supernet(new_prefix=int(newmask))
             newmasks.append({
+                            "netmask": f"{newnet.netmask}",
+                            "netmaskcidr": f"{newnet.prefixlen}",
+                            "wildcard": f"{newnet.hostmask}",
                             "network": f"{newnet.with_prefixlen}",
                             "broadcast": f"{newnet.broadcast_address}",
                             "hostmin": f"{list(newnet.hosts())[0]}",
@@ -75,7 +83,6 @@ def ipcalc():
                             "hostnet": f"{len(list(newnet.hosts()))}"
                             })
         print(newmasks)
-
         return render_template("subnets.html", subnet=json.loads(subnetinfo),
                                newmasks=json.loads(json.dumps(newmasks)))
 

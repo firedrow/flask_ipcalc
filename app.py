@@ -82,7 +82,6 @@ def ipcalc():
                             "hostmax": f"{list(newnet.hosts())[-1]}",
                             "hostnet": f"{len(list(newnet.hosts()))}"
                             })
-        print(newmasks)
         return render_template("subnets.html", subnet=json.loads(subnetinfo),
                                newmasks=json.loads(json.dumps(newmasks)))
 

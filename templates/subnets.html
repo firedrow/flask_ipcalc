@@ -1,38 +1,7 @@
-{% extends "base.html" %}
-{% block ipcalc %}
+{% extends "ipcalc.html" %}
+{% block subnets %}
 <br />
-
-<h3>Subnet Info</h3>
-<table>
-    <tr>
-        <td>Address:</td><td>{{ subnet.address }}</td>
-    </tr>
-    <tr>
-        <td>Netmask:</td><td>{{ subnet.netmask }} = {{ subnet.netmaskcidr }}</td>
-    </tr>
-    <tr style="border-bottom: 1px black dotted;">
-        <td>Wildcard:</td><td>{{ subnet.wildcard }}</td>
-    </tr>
-    <tr>
-        <td>Network:</td><td>{{ subnet.network }}</td>
-    </tr>
-    <tr>
-        <td>Broadcast:</td><td>{{ subnet.broadcast }}</td>
-    </tr>
-    <tr>
-        <td>HostMin:</td><td>{{ subnet.hostmin }}</td>
-    </tr>
-    <tr>
-        <td>HostMax:</td><td>{{ subnet.hostmax }}</td>
-    </tr>
-    <tr>
-        <td>Hosts/Net:</td><td>{{ subnet.hostnet }}</td>
-    </tr>
-</table>
-
 <h3>Subnet Transformation</h3>
-
-
 
 <table>
     <tr>

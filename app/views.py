@@ -9,15 +9,8 @@ This file starts the flask application.
 
 import json
 import ipaddress
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-
-@app.route("/")
-def index():
-    """Return the site index."""
-    return render_template("base.html")
+from flask import render_template, request
+from app import app
 
 
 @app.route("/ipcalc", methods=["GET", "POST"])
@@ -89,5 +82,7 @@ def ipcalc():
         return render_template("base.html")
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="8100")
+@app.route("/")
+def index():
+    """Return the site index."""
+    return render_template("base.html")

@@ -1,7 +1,6 @@
 # Flask IP Calculator
 
-Based on http://jodies.de/ipcalc, I re-wrote it using Python and Flask with
-major lifting from the ipaddress module.
+Based on http://jodies.de/ipcalc, I re-wrote it using Python and Flask with major lifting from the [ipaddress](https://docs.python.org/3/library/ipaddress.html) module.
 
 ## Docker-Compose Setup
 
